@@ -1,0 +1,52 @@
+---
+title       : Mtcars App
+subtitle    : mtcars shiny application
+author      : 
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---libray(shiny)
+
+## Variables used for the model
+
+1. Hourse Power
+2. Wiegth
+3. Transmission Type
+
+--- .class #id 
+
+## Preparation Code
+
+```{r}
+mcars <- read.csv(file="../mtcars.csv")
+mcars[mcars$am ==0,c("tm")] <- gsub("0", "automatic", mcars[mcars$am ==0,c("am")])
+mcars[mcars$am ==1,c("tm")] <- gsub("1", "manual", mcars[mcars$am ==1,c("am")])
+mcars$tm <- as.factor(mcars$tm)
+carsfit <- lm(mpg ~ tm+wt+hp-1, data = mcars)
+
+```
+
+
+---
+
+## Model Summary
+  
+```{r}
+summary(carsfit)
+```  
+  
+  
+---
+
+## Thank You
+
+
+
+---
+
+
+## Thank You
